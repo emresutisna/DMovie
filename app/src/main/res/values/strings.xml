@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">DMovie</string>
+    <string name="movie_poster">Movie Poster</string>
+    <string name="movie_title">Movie Title</string>
+    <string name="release_year">(2020)</string>
+    <string name="genres">Comedy, Drama, Sci-fi</string>
+    <string name="favorite_text">Favorite Button</string>
+    <string name="nav_favorite">Favorite</string>
+    <string name="movie">Movie</string>
+    <string name="tv_show">TV Show</string>
+</resources>

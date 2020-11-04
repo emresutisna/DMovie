@@ -1,0 +1,8 @@
+<resources>
+    <string name="title_favorite">Favorite</string>
+    <string name="nav_tvshows">TV Show</string>
+    <string name="nav_all">All</string>
+    <string name="nav_movie">Movies</string>
+    <string name="message_undo">Undo</string>
+    <string name="message_ok">OK</string>
+</resources>

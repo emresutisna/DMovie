@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="movie_poster">Movie Poster</string>
+    <string name="movie_title">Movie Title</string>
+    <string name="genres">Comedy, Drama, Sci-fi</string>
+    <string name="movie_type">Movie Type</string>
+    <string name="movie">Movie</string>
+    <string name="tv_show">TV Show</string>
+</resources>
