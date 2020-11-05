@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
                 progress_bar.visibility = View.GONE
                 favoriteAdapter.setData(movies)
                 favoriteAdapter.notifyDataSetChanged()
+                empty_view.visibility = if (movies.isNotEmpty()) View.GONE else View.VISIBLE
             })
         })
         toggleFilter.addOnButtonCheckedListener { _, checkedId, isChecked ->
