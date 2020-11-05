@@ -3,6 +3,8 @@ package com.cilegondev.dmovie.favorite
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -13,18 +15,21 @@ import com.cilegondev.dmovie.core.ui.FavoriteAdapter
 import com.cilegondev.dmovie.favorite.ui.FavoriteViewModel
 import com.cilegondev.dmovie.favorite.ui.favoriteModule
 import com.cilegondev.dmovie.ui.detailmovies.DetailMovieActivity
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_favorite.*
+import kotlinx.android.synthetic.main.content_main.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 
-class FavoriteActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     lateinit var favoriteAdapter: FavoriteAdapter
     private val viewModel: FavoriteViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_favorite)
+        setContentView(R.layout.activity_main)
+        setSupportActionBar(findViewById(R.id.toolbar))
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = resources.getString(R.string.title_favorite)
+
         loadKoinModules(favoriteModule)
         itemTouchHelper.attachToRecyclerView(rvFavorites)
 
@@ -61,9 +66,6 @@ class FavoriteActivity : AppCompatActivity() {
             setHasFixedSize(true)
             adapter = favoriteAdapter
         }
-        fabHome.setOnClickListener{
-            super.onBackPressed()
-        }
     }
 
     private val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.Callback() {
@@ -86,12 +88,17 @@ class FavoriteActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-            viewModel.getFilterType().observe(this, Observer {
-                viewModel.getMovies().observe(this, Observer{ movies ->
-                    progress_bar.visibility = View.GONE
-                    favoriteAdapter.setData(movies)
-                    favoriteAdapter.notifyDataSetChanged()
-                })
+        viewModel.getFilterType().observe(this, Observer {
+            viewModel.getMovies().observe(this, Observer{ movies ->
+                progress_bar.visibility = View.GONE
+                favoriteAdapter.setData(movies)
+                favoriteAdapter.notifyDataSetChanged()
             })
+        })
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        super.onBackPressed()
+        return true
     }
 }

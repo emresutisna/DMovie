@@ -14,14 +14,19 @@
     </dist:module>
 
     <application>
-        <activity android:name=".FavoriteActivity">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:scheme="dmovie"
-                    android:host="favorite"/>
-            </intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="favorite"
+                    android:scheme="dmovie" />
+            </intent-filter>
         </activity>
     </application>
 
